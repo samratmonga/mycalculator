@@ -1,0 +1,189 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id{
+            /* color: green; */
+            font-size: 80px;
+            padding: 0;
+            margin: 0;
+            height: 0;
+            width: 0;
+        }
+        #for-input{
+            text-align: center;
+            display: none;
+           
+            
+        }
+        #for-input input{
+            padding: 10px;
+            border-radius: 10px;
+            width: 400px;
+
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1> Online / offline checking </h1>
+
+        <p > status : <span id="id"> . </span> <span id="status"> checking...</span> </p>
+        <h2> Change your Status</h2>
+        <div id="for-input">
+            <input type="text" id="custom-status" placeholder="Enter your custom status">
+            <button onclick="setCustomStatus()">Set Custom Status</button>
+        </div>
+        <button onclick=updateMyStatus() > Away </button>
+        <button onclick=updatMyStatus1() > DND</button>
+        <button onclick=customStatus()> Custom Status </button>
+        
+    </div>
+
+    <script>
+        function updateStatus() {
+            const statusElement = document.getElementById('status');
+            if (navigator.onLine) {
+                //statusElement.textContent = " status : online";
+                document.getElementById('id').style.color = 'green';
+                document.getElementById('status').innerHTML = 'online'
+               
+            }
+            else {
+                //statusElement.textContent = 'status : offline';
+                document.getElementById('id').style.color = 'red';
+                document.getElementById('status').innerHTML = 'offline';
+            }
+
+        }
+        window.addEventListener('online', function (event){
+            updateStatus();
+
+
+        });
+        window.addEventListener('offline', function(event) {
+            updateStatus()
+        });
+        updateStatus(); 
+
+        function updateMyStatus(){
+            document.getElementById('id').style.color = 'orange';
+            document.getElementById('status').innerHTML = 'Away';
+        }
+        function updatMyStatus1() {
+            document.getElementById("id").style.color = "brown"
+            document.getElementById('status').innerHTML = "Do Not Distrub"
+        }
+
+        function customStatus(){
+            document.getElementById('for-input').style.display = 'block';
+
+          
+        }
+        function customStatus() {
+            document.getElementById('for-input').style.display = 'block';
+        }
+            function updateMyStatus(newStatus) {
+            document.getElementById('id').style.color = 'black';
+            document.getElementById('status').innerHTML = newStatus;
+        }
+
+        function setCustomStatus() {
+            const customStatusInput = document.getElementById('custom-status').value;
+            if (customStatusInput.trim() !== '') {
+                updateMyStatus3(customStatusInput);
+                document.getElementById('for-input').style.display = 'none';
+                document.getElementById('custom-status').value = ''; // Clear input field after setting status
+            }
+        }
+
+        
+
+
+
+  
+
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id {
+            font-size: 80px;
+            padding: 0;
+            margin: 0;
+            height: 0;
+            width: 0;
+        }
+        #for-input {
+            text-align: center;
+            display: none;
+        }
+        #for-input input {
+            padding: 10px;
+            border-radius: 10px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Online / offline checking</h1>
+        <p>Status: <span id="id">.</span> <span id="status">Checking...</span></p>
+        <h2>Change your Status</h2>
+        <div id="for-input">
+            <input type="text" id="custom-status" placeholder="Enter your custom status">
+            <button onclick="setCustomStatus()">Set Custom Status</button>
+        </div>
+        <button onclick="updateMyStatus('Away')">Away</button>
+        <button onclick="updateMyStatus('Do Not Disturb')">DND</button>
+        <button onclick="customStatus()">Custom Status</button>
+    </div>
+    <script>
+        function updateStatus() {
+            const statusElement = document.getElementById('status');
+            if (navigator.onLine) {
+                document.getElementById('id').style.color = 'green';
+                document.getElementById('status').innerHTML = 'Online';
+            } else {
+                document.getElementById('id').style.color = 'red';
+                document.getElementById('status').innerHTML = 'Offline';
+            }
+        }
+        window.addEventListener('online', updateStatus);
+        window.addEventListener('offline', updateStatus);
+        updateStatus();
+
+        function updateMyStatus(newStatus) {
+            document.getElementById('id').style.color = 'black';
+            document.getElementById('status').innerHTML = newStatus;
+        }
+
+        function customStatus() {
+            document.getElementById('for-input').style.display = 'block';
+        }
+
+        function setCustomStatus() {
+            const customStatusInput = document.getElementById('custom-status').value;
+            if (customStatusInput.trim() !== '') {
+                updateMyStatus(customStatusInput);
+                document.getElementById('for-input').style.display = 'none';
+                document.getElementById('custom-status').value = ''; // Clear input field after setting status
+            }
+        }
+    </script>
+</body>
+</html>
